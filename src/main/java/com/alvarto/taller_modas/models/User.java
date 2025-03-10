@@ -1,0 +1,38 @@
+package com.alvarto.taller_modas.models;
+
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
+@Table(name = "users")
+public class User {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private String id;
+
+    @jakarta.validation.constraints.NotBlank
+    @Column(unique = true, nullable = false)
+    private String userName;
+
+    @jakarta.validation.constraints.NotBlank
+    @Column(nullable = false)
+    private String password;
+
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "role_id", nullable = false)
+    private Role role;
+
+    public User(String userName, String password, Role role) {
+        this.userName = userName;
+        this.password = password;
+        this.role = role;
+    }
+}
