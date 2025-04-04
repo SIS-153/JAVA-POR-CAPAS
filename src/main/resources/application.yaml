@@ -11,8 +11,32 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+    defer-datasource-initialization: true
     properties:
       hibernate:
         format_sql: true
+  sql:
+    init:
+      mode: always
+      platform: postgresql
+  
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 784196135502-vratsghrbgu2ea2pjqn2id2c9jqt4hj5.apps.googleusercontent.com
+            client-secret: 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
+            redirect-uri: http://localhost:8080/login/oauth2/code/google
+            #http://localhost:8080/oauth2/authorization/google
+            scope: email, profile
+
 server:
   port: 8080
+
+logging:
+  level:
+    org.hibernate.SQL: DEBUG  # Muestra las sentencias SQL generadas
+    org.hibernate.orm.jdbc.bind: TRACE  # 👈 Muestra los valores de los parámetros
+    # Opcional: Más detalles de Hibernate
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
