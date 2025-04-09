@@ -1,12 +1,12 @@
 jwt:
-  secret: mY_S3cr3t_K3y_!@#_2025_T4ll3r_M0d4s
+  secret: ${JWT_SECRET}
   expiration: 3600
 
 spring:
   datasource:
-    url: jdbc:postgresql://postgres:5432/taller_modas
-    username: alvaro
-    password: 123
+    url: ${DATABASE_URL}
+    username: ${DATABASE_USERNAME}
+    password: ${DATABASE_PASSWORD}
   jpa:
     hibernate:
       ddl-auto: update
@@ -25,10 +25,9 @@ spring:
       client:
         registration:
           google:
-            client-id: 784196135502-vratsghrbgu2ea2pjqn2id2c9jqt4hj5.apps.googleusercontent.com
-            client-secret: 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
-            redirect-uri: http://localhost:8080/login/oauth2/code/google
-            #http://localhost:8080/oauth2/authorization/google
+            client-id: ${GOOGLE_CLIENT_ID}
+            client-secret: ${GOOGLE_CLIENT_SECRET}
+            redirect-uri: ${GOOGLE_REDIRECT_URI}
             scope: email, profile
 
 server:
@@ -36,7 +35,6 @@ server:
 
 logging:
   level:
-    org.hibernate.SQL: DEBUG  # Muestra las sentencias SQL generadas
-    org.hibernate.orm.jdbc.bind: TRACE  # 👈 Muestra los valores de los parámetros
-    # Opcional: Más detalles de Hibernate
+    org.hibernate.SQL: DEBUG
+    org.hibernate.orm.jdbc.bind: TRACE
     org.hibernate.type.descriptor.sql.BasicBinder: TRACE
