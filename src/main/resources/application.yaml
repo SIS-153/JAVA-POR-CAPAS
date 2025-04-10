@@ -1,17 +1,16 @@
 jwt:
-  secret: ${JWT_SECRET}
+  secret: mY_S3cr3t_K3y_!@#_2025_T4ll3r_M0d4s
   expiration: 3600
 
 spring:
   datasource:
-    url: ${DATABASE_URL}
-    username: ${DATABASE_USERNAME}
-    password: ${DATABASE_PASSWORD}
+    url: jdbc:postgresql://postgres:5432/taller_modas
+    username: alvaro
+    password: 123
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
-    defer-datasource-initialization: true
     properties:
       hibernate:
         format_sql: true
