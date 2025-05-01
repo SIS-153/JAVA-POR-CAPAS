@@ -1,6 +1,12 @@
 package com.alvarto.taller_modas.models;
 
 
+//"Este archivo fue creado por el estudiante.
+
+
+
+
+
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
